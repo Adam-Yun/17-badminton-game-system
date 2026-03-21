@@ -1,0 +1,186 @@
+/* MAIN LAYOUT 
+  Centers the entire dashboard on the screen and limits how wide it can get on large monitors.
+*/
+.container {
+  max-width: 800px;
+  margin: 0 auto; /* The 'auto' left and right margins center the block horizontally */
+  padding: 20px;
+  /* Uses the default system font of whatever OS the umpire is using (iOS, Android, Windows) */
+  font-family: system-ui, -apple-system, sans-serif; 
+  color: #333;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #eee; /* Creates a subtle dividing line under the title */
+  padding-bottom: 10px;
+  color:rgb(189, 189, 189);
+}
+
+/* PHASE 1: SETUP FORM 
+  Uses Flexbox to stack the form inputs cleanly.
+*/
+.setupForm {
+  display: flex;
+  flex-direction: column; /* Stacks children top-to-bottom instead of left-to-right */
+  gap: 20px; /* Adds consistent spacing between each form group without needing margins */
+  background: #f9f9f9;
+  padding: 30px;
+  border-radius: 12px; /* Softens the UI by rounding the corners of the background box */
+}
+
+.playerInput {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Targets all <input> tags specifically inside elements with the .playerInput class */
+.playerInput input {
+  padding: 12px; /* Makes the text boxes taller so they are easy to tap on a touchscreen */
+  font-size: 16px; /* 16px is the magic number that prevents iOS Safari from annoyingly auto-zooming when tapping an input */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* PHASE 2: SCOREBOARD 
+*/
+.scoreboard {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* The grey pill at the top showing the current set number */
+.matchInfo {
+  text-align: center;
+  background: #eef2f5;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Flexbox container to place the two player cards side-by-side */
+.scoreContainer {
+  display: flex;
+  /* Pushes the two player cards to the far left and right, leaving the "VS" text in the middle */
+  justify-content: space-between; 
+  align-items: center; /* Vertically centers the "VS" divider with the tall player cards */
+}
+
+/* The white box containing a single player's details and active score */
+.playerCard {
+  flex: 1; /* Forces both player cards to stretch and take up exactly equal width */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the text and score inside the card */
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Adds a soft drop shadow to make the card "pop" off the background */
+}
+
+.playerMeta {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.playerMeta h3 {
+  margin: 0 0 5px 0;
+  font-size: 24px;
+}
+
+/* Makes the country and sets text behave like block elements so they stack vertically */
+.country {
+  display: block;
+  font-weight: bold;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.sets {
+  display: block;
+  font-size: 14px;
+  color: #0056b3;
+  font-weight: bold;
+}
+
+/* Massive font size so the umpire can read the score easily at a quick glance */
+.score {
+  font-size: 80px;
+  font-weight: bold;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+/* Places the + and - buttons side-by-side underneath the score */
+.controls {
+  display: flex;
+  gap: 15px;
+}
+
+/* BUTTON STYLING 
+  Shared styles for the circular plus and minus buttons
+*/
+.plusBtn, .minusBtn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; /* A 50% border radius turns a square box into a perfect circle */
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center; /* Vertically centers the + or - symbol */
+  justify-content: center; /* Horizontally centers the + or - symbol */
+  color: white;
+}
+
+.plusBtn { background-color: #28a745; }
+.minusBtn { background-color: #dc3545; }
+
+/* The :active pseudo-class makes the buttons flash a slightly darker color exactly when tapped, providing visual feedback to the umpire */
+.plusBtn:active { background-color: #218838; }
+.minusBtn:active { background-color: #c82333; }
+
+.divider {
+  font-size: 24px;
+  font-weight: bold;
+  color: #999;
+  padding: 0 20px;
+}
+
+/* GENERAL ACTION BUTTONS 
+  Styles for "Start Match", "End Set", and "End Match"
+*/
+.matchActions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.primaryButton, .secondaryButton, .dangerButton {
+  padding: 15px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer; /* Changes the mouse to a hand icon when hovering on desktop */
+  font-weight: bold;
+  color: white;
+}
+
+.primaryButton { background-color: #007bff; width: 100%; }
+.secondaryButton { background-color: #6c757d; }
+.dangerButton { background-color: #dc3545; }
+
+/* PHASE 3: RESULT SCREEN
+*/
+.resultScreen {
+  text-align: center;
+  padding: 50px 20px;
+  background: #eef2f5;
+  border-radius: 12px;
+}
+
+.resultScreen h2 { font-size: 32px; margin-bottom: 10px; }
+.resultScreen p { font-size: 24px; margin-bottom: 30px; }

@@ -21,16 +21,16 @@ jobs:
     - name: Build Admin Docker image
       run: |
         cd admin              # Go into frontend folder
-        docker build -t frontend-app .   # Build Docker image named "frontend-app"
+        docker build -t admin .   # Build Docker image named "frontend-app"
 
     # Step 2: Build frontend Docker image
     - name: Build Scoreboard Docker image
       run: |
         cd scoreboard              # Go into frontend folder
-        docker build -t frontend-app .   # Build Docker image named "frontend-app"
+        docker build -t scoreboard .   # Build Docker image named "frontend-app"
 
     # Step 3: Build backend Docker image
     - name: Build Server Docker image
       run: |
         cd server               # Go into backend folder
-        docker build -t backend-app .    # Build Docker image named "backend-app"
+        docker build -t server .    # Build Docker image named "backend-app"
